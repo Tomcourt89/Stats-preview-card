@@ -1,0 +1,147 @@
+:root {
+    --bg: hsl(233, 47%, 7%);
+    --card-bg: hsl(244, 38%, 16%);
+    --violet: hsl(277, 64%, 61%);
+    --white: hsl(0, 0%, 100%);
+    --fade: hsla(0, 0%, 100%, 0.75);
+    --faded: hsla(0, 0%, 100%, 0.6);
+
+    --text-xl: 1.75rem;
+    --text-lg: 1.5rem;
+    --text-base: 0.9375rem;
+    --text-sm: 0.75rem;
+
+    --font-main: "Inter", sans-serif;
+    --font-alt: "Lexend Deca", sans-serif;
+
+    @media (width >= 40em) {
+        --text-xl: 2.25rem;
+    }
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: grid;
+    height: 100vh;
+    place-items: center;
+    grid-template-rows: 90% 1fr;
+    font-family: var(--font-main);
+    background: var(--bg);
+    color: var(--white);
+}
+
+article {
+    display: grid;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--card-bg);
+    margin: 24px;
+    max-width: 1110px;
+
+    img {
+        width: 100%;
+    }
+
+    @media (width >= 40em) {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        place-items: center;
+    }
+}
+
+.image-wrapper {
+    margin-bottom: 8px;
+    position: relative;
+    line-height: 0;
+
+    img {
+        mix-blend-mode: multiply;
+        opacity: 75%;
+    }
+
+    &::before {
+        content: '';
+        background: var(--violet);
+        position: absolute;
+        inset: 0;
+    }
+
+    @media (width >= 40em) {
+        order: 2;
+        margin: 0;
+
+        img {
+            content: url(../images/image-header-desktop.jpg);
+        }
+    }
+}
+
+.content {
+    padding: 32px;
+    text-align: center;
+
+    h2 {
+        font-size: var(--text-xl);
+        line-height: 2rem;
+        font-weight: 700;
+
+        span {
+            color: var(--violet);
+        }
+    }
+
+    > p {
+        color: var(--fade);
+        font-size: var(--text-base);
+        margin-block: 16px 40px;
+        line-height: 1.5625rem;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        list-style-type: none;
+
+        h3 {
+            font-size: var(--text-lg);
+            margin-bottom: 2px;
+            font-weight: 700;
+        }
+
+        p {
+            font-family: var(--font-alt);
+            text-transform: uppercase;
+            font-size: var(--text-sm);
+            color: var(--faded);
+            letter-spacing: 0.0625rem;
+            font-weight: 400;
+            line-height: 1.5625rem;
+        }
+    }
+
+    @media (width >= 40em) {
+        padding: 72px 77px 60px 72px;
+        text-align: left;
+
+        h2 {
+            line-height: 2.75rem;
+        }
+
+        > p {
+            margin-block: 25px 72px;
+        }
+
+        ul {
+            flex-direction: row;
+            gap: 63px;
+        }
+    }
+}
